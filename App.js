@@ -1,0 +1,68 @@
+// App.js
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import 'react-native-gesture-handler';
+import Login from './app/screens/Login';
+import Home from './app/screens/Home';
+import Workouts from './app/screens/Workouts';
+import Progress from './app/screens/Progress';
+import Nutrition from './app/screens/Nutrition';
+import Settings from './app/screens/Settings';
+import List from './app/screens/List';
+import Details from './app/screens/Details';
+import Perfil from './app/screens/Perfil';
+import { useEffect, useState } from 'react';
+import { onAuthStateChanged, User } from 'firebase/auth';
+import { FIREBASE_AUTH } from './FirebaseConfig';
+
+const Stack = createNativeStackNavigator();
+const Drawer = createNativeStackNavigator();
+
+// function Home(){
+//   return(
+//     <Stack.Navigator>
+//       <Stack.Screen name="Home" component={Home} />
+//     </Stack.Navigator>
+//   )
+// }
+
+function WorkoutsStack() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="Workouts" component={Workouts} />
+      {/* Puedes añadir más pantallas dentro del stack, como detalles de un ejercicio */}
+    </Stack.Navigator>
+  );
+}
+
+function DrawerLayout() {
+  return (
+    <Drawer.Navigator initialRouteName="Home">
+      <Drawer.Screen name="Home" component={Home} />
+      <Drawer.Screen name="Workouts" component={WorkoutsStack} />
+      <Drawer.Screen name="Progress" component={Progress} />
+      <Drawer.Screen name="Nutrition" component={Nutrition} />
+      <Drawer.Screen name="Profile" component={Perfil} />
+      <Drawer.Screen name="Settings" component={Settings} />
+    </Drawer.Navigator>
+  );
+}
+
+export default function App() {
+  const [user, setUser] = useState(user);
+
+  useEffect(() => {
+    onAuthStateChanged(FIREBASE_AUTH, (user) => {
+      console.log(user);
+      setUser(user);
+    });
+  }, []);
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName='Login'>
+        {user ? <Stack.Screen name='MainApp' component={DrawerLayout} options={{ headerShown: false }} />
+        : <Stack.Screen name='Login' component={Login} options={{ headerShown: false }} />}
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
