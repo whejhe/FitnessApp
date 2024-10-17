@@ -6,14 +6,13 @@ import Perfil from '../screens/Perfil';
 
 const FooterTab = createBottomTabNavigator();
 
-const FooterNavegator = () => {
+const FooterNavHome = () => {
     return (
         <FooterTab.Navigator>
-            <FooterTab.Screen name="Home" component={Home} />
             <FooterTab.Screen name="Settings" component={Settings} />
             <FooterTab.Screen name="Perfil" component={Perfil} />
         </FooterTab.Navigator>
     );
 }
 
-export default FooterNavegator;
+export default FooterNavHome;

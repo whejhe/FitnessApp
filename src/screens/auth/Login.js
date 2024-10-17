@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, ActivityIndicator, Button, KeyboardAvoidingView, StyleSheet, Pressable, Image } from 'react-native';
 import { FIREBASE_AUTH } from '../../../src/services/FirebaseConfig';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
+import { colors } from '../../styles';
 
 const Login = () => {
 
@@ -38,7 +39,7 @@ const Login = () => {
 
     return (
         <View style={styles.container}>
-            <Image style={styles.image} source={require('../../assets/login.png')} />
+            <Image style={styles.image} source={require('../../../assets/login.png')} />
             
             <KeyboardAvoidingView behavior='padding'>
                 <TextInput value={email} style={styles.input} placeholder='Email' autoCapitalize='none'
@@ -66,7 +67,7 @@ const Login = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#8087F0',
+        backgroundColor: colors.primary,
         alignItems: 'center',
         justifyContent: 'center',
         width: '100%',
@@ -79,19 +80,19 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         borderRadius: 4,
         padding: 10,
-        backgroundColor: '#fff',
-        borderColor: '#323446'
+        backgroundColor: colors.light,
+        borderColor: colors.color5
     },
     button:{
         padding: 10,
-        backgroundColor: '#323446',
+        backgroundColor: colors.color5,
         borderRadius: 8,
         marginVertical: 5,
         borderWidth: 1,
-        borderColor: '#F0D262',
+        borderColor: colors.color4,
     },
     text:{
-        color: '#fff',
+        color: colors.light,
         textAlign: 'center',
         fontWeight: 'bold',
     },
@@ -100,7 +101,7 @@ const styles = StyleSheet.create({
         height: 100,
         resizeMode: 'contain',
         marginBottom: 10,
-        borderColor: '#fff',
+        borderColor: colors.light,
         borderWidth: 1,
         borderRadius: 50,
     }

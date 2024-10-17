@@ -1,29 +1,25 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { colors } from '../styles';
-import FooterNavHome from '../navigation/FooterNavHome';
 
-const Home = () => {
+const DietAndMealPlans = () => {
     return (
         <View style={styles.container}>
-            <Text style={styles.text}>Pagina de Inicio</Text>
-            {/* <FooterNavHome /> */}
+            <Text style={styles.text}>Pagina de planes de ejercicios</Text>
         </View>
     );
 };
 
-
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: colors.primary,
+        backgroundColor: '#8087F0',
         alignItems: 'center',
         justifyContent: 'center',
         width: '100%',
         height: '100%',
     },
     text:{
-        color: colors.whiteText,
+        color: '#fff',
         textAlign: 'center',
         fontWeight: 'bold',
         fontSize: 20
@@ -31,4 +27,4 @@ const styles = StyleSheet.create({
     
 });
 
-export default Home;
+export default DietAndMealPlans;

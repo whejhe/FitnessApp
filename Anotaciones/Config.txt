@@ -27,6 +27,7 @@ npm install @react-navigation/drawer
 npx expo install react-native-screens react-native-safe-area-context
 npx expo install react-native-gesture-handler
 npx expo install react-native-reanimated
+npm install @react-navigation/bottom-tabs
 
 Configurar Metro:
 npx expo customize metro.config.js
