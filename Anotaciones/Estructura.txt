@@ -1,0 +1,19 @@
+src/
+    
+    navigation/
+        FooterNavegator.js
+        MenuDesplegable.js
+    
+    screens/
+        Details.js
+        Home.js
+        List.js
+        Nutrition.js
+        Perfil.js
+        Progress.js
+        Settings.js
+        Workouts.js
+            
+            auth/
+                Login.js
+App.js
