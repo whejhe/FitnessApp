@@ -4,6 +4,11 @@ src/
         FooterNavegator.js
         MenuDesplegable.js
     
+    components/
+        Button.js
+        Card.js
+        Header.js
+        Loader.js
     screens/
         Details.js
         Home.js
@@ -13,7 +18,16 @@ src/
         Progress.js
         Settings.js
         Workouts.js
-            
             auth/
                 Login.js
+    services/
+        FirebaseConfig.js
+        ApiRest.js    
+    styles/
+        colors.js
+        typography.js
+        globalStyles.js 
+    utils/
+        formatDate.js
+        calculateBMI.js       
 App.js
