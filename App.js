@@ -13,7 +13,7 @@ import Details from './src/screens/Details';
 import Perfil from './src/screens/Perfil';
 import { useEffect, useState } from 'react';
 import { onAuthStateChanged, User } from 'firebase/auth';
-import { FIREBASE_AUTH } from './FirebaseConfig';
+import { FIREBASE_AUTH } from './src/services/FirebaseConfig';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createNativeStackNavigator();

@@ -1,7 +1,7 @@
 // app/screens/List.js
 import React from 'react';
 import { View, Text, Pressable, StyleSheet, Image } from 'react-native';
-import { FIREBASE_AUTH } from '../../FirebaseConfig';
+import { FIREBASE_AUTH } from '../../src/services/FirebaseConfig';
 
 const List = ({navigation}) => {
     return(
