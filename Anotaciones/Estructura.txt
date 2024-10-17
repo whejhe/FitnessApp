@@ -9,6 +9,8 @@ src/
         Card.js
         Header.js
         Loader.js
+        Footer.js
+
     screens/
         Details.js
         Home.js
@@ -18,16 +20,31 @@ src/
         Progress.js
         Settings.js
         Workouts.js
+        WorkoutPlans.js
+        SleepTracker.js
+        FitnessArticles.js
+        PersonalRecords.js
+        Challenges.js
+        DietAndMealPlans.js
             auth/
                 Login.js
+
     services/
         FirebaseConfig.js
-        ApiRest.js    
+        ApiRest.js   
+
     styles/
         colors.js
         typography.js
         globalStyles.js 
+
     utils/
         formatDate.js
-        calculateBMI.js       
+        calculateBMI.js    
+        validation.js   
+
+    constants/
+        apiUrls.js
+        messages.js
+
 App.js
