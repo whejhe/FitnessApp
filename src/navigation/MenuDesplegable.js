@@ -1,8 +1,7 @@
 import React from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-// import { NavigationContainer } from "@react-navigation/native";
 
-import { Workouts, WorkoutsPlans, Details, List, Nutrition, Progress, SleepTracker, Settings, PersonalRecords, FitnessArticles, DietAndMealPlans, Challenges, Home } from "../screens/index";
+import { Workouts, WorkoutsPlans, Details, List, Nutrition, Progress, SleepTracker, Settings, PersonalRecords, FitnessArticles, DietAndMealPlans, Challenges, Home, Perfil, CierreDeSesion } from "../screens/index";
 
 const SideBar = createDrawerNavigator();
 
@@ -21,6 +20,9 @@ const MenuDesplegable = () => {
                 <SideBar.Screen name="SleepTracker" component={SleepTracker} />
                 <SideBar.Screen name="Workouts" component={Workouts} />
                 <SideBar.Screen name="WorkoutsPlans" component={WorkoutsPlans} />
+                <SideBar.Screen name="Settings" component={Settings} />
+                <SideBar.Screen name="Perfil" component={Perfil} />
+                <SideBar.Screen name="CierreDeSesion" component={CierreDeSesion} />
             </SideBar.Navigator>
     )
 };

@@ -27,3 +27,5 @@ const styles = StyleSheet.create({
         fontSize: 20
     }
 });
+
+export default Button;

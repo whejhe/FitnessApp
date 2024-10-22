@@ -1,13 +1,13 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import colors from '../styles/colors';
-import FooterNavHome from '../navigation/FooterNavHome';
+import Header from '../components/Header';
 
 const Home = () => {
     return (
         <View style={styles.container}>
+            <Header />
             <Text style={styles.text}>Pagina de Inicio</Text>
-            <FooterNavHome />
         </View>
     );
 };
