@@ -1,5 +1,5 @@
 // styles/colors.js
-export default {
+const colors = {
     primary: '#B39F54',
     secondary: '#F0D262',
     tertiary: '#8087F0',
@@ -16,3 +16,5 @@ export default {
     whiteText: '#f5f5f5',
     blackText: '#000',
 };
+
+export default colors;

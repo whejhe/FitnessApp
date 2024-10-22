@@ -1,7 +1,3 @@
-Enlaces:
-https://www.youtube.com/watch?v=ONAVmsGW6-M
-https://docs.expo.dev/
-https://firebase.google.com/?hl=es-419
 
 Instalacion Previa: Node, git, Visual studio, npm
 
@@ -27,6 +23,7 @@ npm install @react-navigation/drawer
 npx expo install react-native-screens react-native-safe-area-context
 npx expo install react-native-gesture-handler
 npx expo install react-native-reanimated
+npx expo install expo-router expo-linking expo-constants expo-status-bar
 npm install @react-navigation/bottom-tabs
 
 Configurar Metro:

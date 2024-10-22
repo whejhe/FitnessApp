@@ -2,6 +2,8 @@
 
 import React from 'react';
 import { View, Text, StyleSheet, Pressable } from 'react-native';
+import { colors } from '../styles/colors';
+
 
 const CierreDeSesion = ({}) => {
     return(

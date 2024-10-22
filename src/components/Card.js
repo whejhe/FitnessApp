@@ -1,6 +1,8 @@
 import React from 'react';
 import { Pressable, Text, StyleSheet } from 'react-native';
 import { View } from 'react-native-web';
+import { colors } from '../styles/colors';
+
 
 const Card = () => {
     return(

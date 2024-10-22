@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, ActivityIndicator, Button, KeyboardAvoidingView, StyleSheet, Pressable, Image } from 'react-native';
 import { FIREBASE_AUTH } from '../../../src/services/FirebaseConfig';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
-import { colors } from '../../styles';
+import colors from '../../styles/colors';
 
 const Login = () => {
 
@@ -16,7 +16,7 @@ const Login = () => {
         setLoading(true);
         try {
             const response = await signInWithEmailAndPassword(auth, email, password);
-            console.log(response);
+            // console.log(response);
         } catch (error) {
             console.log(error);
             alert('Sign in failed: ' + error.message);
@@ -28,7 +28,7 @@ const Login = () => {
         setLoading(true);
         try {
             const response = await createUserWithEmailAndPassword(auth, email, password);
-            console.log(response);
+            // console.log(response);
             alert('Sign up successful, check your email for verification');
         } catch (error) {
             console.log(error);
@@ -67,7 +67,7 @@ const Login = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: colors.primary,
+        backgroundColor: '#8087F0',
         alignItems: 'center',
         justifyContent: 'center',
         width: '100%',
@@ -80,19 +80,19 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         borderRadius: 4,
         padding: 10,
-        backgroundColor: colors.light,
-        borderColor: colors.color5
+        backgroundColor: '#fff',
+        borderColor: '#F0D262',
     },
     button:{
         padding: 10,
-        backgroundColor: colors.color5,
+        backgroundColor: '#323446',
         borderRadius: 8,
         marginVertical: 5,
         borderWidth: 1,
-        borderColor: colors.color4,
+        borderColor: '#F0D262',
     },
     text:{
-        color: colors.light,
+        color: '#fff',
         textAlign: 'center',
         fontWeight: 'bold',
     },
@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
         height: 100,
         resizeMode: 'contain',
         marginBottom: 10,
-        borderColor: colors.light,
+        borderColor: '#F0D262',
         borderWidth: 1,
         borderRadius: 50,
     }

@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, StyleSheet, ActivityIndicator } from 'react-native';
+import { colors } from '../styles/colors';
 
 const Loader = () => {
     return (

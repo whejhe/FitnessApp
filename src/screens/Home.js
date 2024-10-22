@@ -1,17 +1,16 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { colors } from '../styles';
+import colors from '../styles/colors';
 import FooterNavHome from '../navigation/FooterNavHome';
 
 const Home = () => {
     return (
         <View style={styles.container}>
             <Text style={styles.text}>Pagina de Inicio</Text>
-            {/* <FooterNavHome /> */}
+            <FooterNavHome />
         </View>
     );
 };
-
 
 const styles = StyleSheet.create({
     container: {
@@ -30,5 +29,7 @@ const styles = StyleSheet.create({
     }
     
 });
+
+
 
 export default Home;

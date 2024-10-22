@@ -1,5 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import { colors } from '../styles/colors';
+
 
 const Workouts = () => {
     return (
