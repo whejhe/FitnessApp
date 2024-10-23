@@ -11,13 +11,14 @@ import MenuDesplegable from './src/navigation/MenuDesplegable';
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-  const [user, setUser] = useState(user);
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
-    onAuthStateChanged(FIREBASE_AUTH, (user) => {
-      console.log(user);
-      setUser(user);
-    });
+      const unsubscribe = onAuthStateChanged(FIREBASE_AUTH, (user) => {
+        setUser(user);
+      });
+      // console.log(user);
+      return unsubscribe;
   }, []);
   return (
     <NavigationContainer>

@@ -1,6 +1,6 @@
 // app/screens/Login.js
 import React, { useState } from 'react';
-import { View, Text, TextInput, ActivityIndicator, Button, KeyboardAvoidingView, StyleSheet, Pressable, Image } from 'react-native';
+import { View, Text, TextInput, ActivityIndicator, Button, KeyboardAvoidingView, StyleSheet, Pressable, Image, ImageBackground } from 'react-native';
 import { FIREBASE_AUTH } from '../../../src/services/FirebaseConfig';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import colors from '../../styles/colors';
@@ -38,7 +38,7 @@ const Login = () => {
     };
 
     return (
-        <View style={styles.container}>
+        <ImageBackground source={require('../../../assets/introLoginBackgroundTrans.jpg')} style={styles.container}>
             <Image style={styles.image} source={require('../../../assets/login.png')} />
             
             <KeyboardAvoidingView behavior='padding'>
@@ -60,7 +60,7 @@ const Login = () => {
                     </>
                 )}
             </KeyboardAvoidingView>
-        </View>
+        </ImageBackground>
     );
 };
 

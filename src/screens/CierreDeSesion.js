@@ -2,6 +2,8 @@
 
 import React from 'react';
 import { View, Text, StyleSheet, Pressable } from 'react-native';
+import { FIREBASE_AUTH } from '../services/FirebaseConfig';
+import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { colors } from '../styles/colors';
 
 
@@ -9,7 +11,7 @@ const CierreDeSesion = ({}) => {
     return(
         <View style={styles.container}>
             <Text style={styles.text}>Cierre de Sesion</Text>
-            <Pressable style={styles.button}>
+            <Pressable style={styles.button} onPress={() => FIREBASE_AUTH.signOut()}>
                 <Text style={styles.text}>Logout</Text>
             </Pressable>
         </View>
@@ -33,7 +35,7 @@ const styles = StyleSheet.create({
         marginVertical: 5,
         borderWidth: 1,
         borderColor: '#F0D262',
-        width: 250
+        width: 250,
     },
     text:{
         color: '#fff',

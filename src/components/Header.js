@@ -7,7 +7,7 @@ const Header = () => {
     return (
         <View style={styles.container}>
             <Text style={styles.headerText}>Fitness App</Text>
-            <Image style={styles.image} source={require('../../assets/luna.png')} />
+            <Image style={styles.image} source={require('../../assets/icon.png')} />
         </View>
     )
 }
@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
         top: 0,
         left: 0,
         right: 0,
-        backgroundColor: colors.primary,
+        // backgroundColor: colors.primary,
         padding: 20,
         flexDirection: 'row',
         alignItems: 'center',
@@ -26,17 +26,20 @@ const styles = StyleSheet.create({
         
     },
     headerText: {
-        color: '#fff',
+        color: colors.dark,
+        backgroundColor: colors.lightRGBA,
         textAlign: 'center',
         fontWeight: 'bold',
         fontSize: 35,
         width: 'fit-content',
         fontFamily: 'monospace',
+        padding: 5
     },
     image: {
         width: 100,
         height: 100,
         resizeMode: 'contain',
+        opacity: 0.8
     }
 });
 

@@ -16,7 +16,7 @@ src/
         Perfil.js
         Settings.js
         
-        Workouts.js
+        Entrenamientos.js
         WorkoutPlans.js
         Details.js
         List.js
