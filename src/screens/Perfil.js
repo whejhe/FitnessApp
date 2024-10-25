@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, Image, Pressable } from 'react-native';
-import colors from '../styles/colors';
+import { View, Text, StyleSheet, Image, Pressable, TextInput, ActivityIndicator } from 'react-native';
+import { FIREBASE_AUTH, FIRESTORE_DB } from '../services/FirebaseConfig';
 import { onAuthStateChanged } from 'firebase/auth';
-import { FIREBASE_AUTH } from '../services/FirebaseConfig';
+import { doc, getDoc, setDoc } from 'firebase/firestore';
+import colors from '../styles/colors';
 
 
 
@@ -10,32 +11,83 @@ const Perfil = () => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [nombre, setNombre] = useState('');
+    const [email, setEmail] = useState('');
+    const [isEditing, setIsEditing] = useState(false);
 
     useEffect(() => {
-        onAuthStateChanged(FIREBASE_AUTH, (user) => {
-            try {
-                setUser(user);
-                setLoading(false);
-            } catch (error) {
-                setError(error);
-                setLoading(false);
+        const unsubscribe = onAuthStateChanged(FIREBASE_AUTH, async (user) => {
+            if (user) {
+                try {
+                    setUser(user);
+                    // Obtener la información del usuario desde Firestore
+                    const docRef = doc(FIRESTORE_DB, "usuarios", user.uid);
+                    const docSnap = await getDoc(docRef);
+                    if (docSnap.exists()) {
+                        const userData = docSnap.data();
+                        setNombre(userData.nombre || '');
+                        setEmail(userData.email || user.email); // Usar email de Firebase Auth si no existe en Firestore
+                    }
+                    setLoading(false);
+                } catch (error) {
+                    setError(error.message); // Actualizar con el mensaje, no con el objeto Error
+                    setLoading(false);
+                }
             }
         });
+        return unsubscribe;
     }, []);
+    
+    const handleSave = async () => {
+        if (!user) return;
+
+        try {
+            // Guardar los datos del usuario en Firestore
+            await setDoc(doc(FIRESTORE_DB, "usuarios", user.uid), {
+                nombre,
+                email,
+            });
+            setIsEditing(false); // Finalizar la edición
+        } catch (error) {
+            setError(error.message);
+        }
+    };
+
+    if (loading) {
+        return <ActivityIndicator size="large" color={colors.light} />;
+    }
+
     return (
         <View style={styles.container}>
+            {error && <Text style={styles.error}>{error}</Text>}
             {user && (
                 <View>
                     <Image style={styles.image} source={require('../../assets/defaultProfile.png')} />
                     <Text style={styles.text}>Información del usuario:</Text>
-                    <Text>Nombre: {user.displayName}</Text>
-                    <Text>Correo electrónico: {user.email}</Text>
-                    <Text>UID: {user.uid}</Text>
+                    {isEditing ? (
+                        <>
+                            <TextInput style={styles.input} value={nombre}
+                                onChangeText={setNombre} placeholder="Nombre"
+                            />
+                            <TextInput style={styles.input} value={email}
+                                onChangeText={setEmail} placeholder="Correo electrónico"
+                            />
+                            <Pressable style={styles.button} onPress={handleSave}>
+                                <Text style={styles.text}>Guardar</Text>
+                            </Pressable>
+                        </>
+                    ) : (
+                        <>
+                            <Text>Nombre: {nombre}</Text>
+                            <Text>Correo electrónico: {email}</Text>
+                            <Text>UID: {user.uid}</Text>
+                            <Pressable style={styles.button} onPress={() => setIsEditing(true)}>
+                                <Text style={styles.text}>Editar Perfil</Text>
+                            </Pressable>
+                        </>
+                    )}
                 </View>
             )}
-            <Pressable style={styles.button}>
-                <Text style={styles.text}>Editar Perfil</Text>
-            </Pressable>
         </View>
     );
 };
@@ -55,6 +107,15 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 20
     },
+    input: {
+        width: '80%',
+        padding: 10,
+        marginVertical: 10,
+        borderWidth: 1,
+        borderColor: colors.light,
+        borderRadius: 8,
+        backgroundColor: colors.light
+    },
     image: {
         display: 'flex',
         alignItems: 'center',
@@ -73,9 +134,11 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: colors.light,
         marginTop: 20
+    },
+    error: {
+        color: 'red',
+        marginBottom: 10,
     }
-
-
 });
 
 export default Perfil;
