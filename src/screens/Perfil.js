@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, Image, Pressable, TextInput, ActivityIndicator } from 'react-native';
+import { View, Text, StyleSheet, Image, Pressable, TextInput, ActivityIndicator, ImageBackground } from 'react-native';
 import { FIREBASE_AUTH, FIRESTORE_DB } from '../services/FirebaseConfig';
 import { onAuthStateChanged } from 'firebase/auth';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
@@ -58,7 +58,7 @@ const Perfil = () => {
     }
 
     return (
-        <View style={styles.container}>
+        <ImageBackground source={require('../../assets/profile-background.jpg')} style={styles.container}>
             {error && <Text style={styles.error}>{error}</Text>}
             {user && (
                 <View>
@@ -78,9 +78,9 @@ const Perfil = () => {
                         </>
                     ) : (
                         <>
-                            <Text>Nombre: {nombre}</Text>
-                            <Text>Correo electrónico: {email}</Text>
-                            <Text>UID: {user.uid}</Text>
+                            <Text style={styles.text}>Nombre: {nombre}</Text>
+                            <Text style={styles.text}>Correo electrónico: {email}</Text>
+                            <Text style={styles.text}>UID: {user.uid}</Text>
                             <Pressable style={styles.button} onPress={() => setIsEditing(true)}>
                                 <Text style={styles.text}>Editar Perfil</Text>
                             </Pressable>
@@ -88,7 +88,7 @@ const Perfil = () => {
                     )}
                 </View>
             )}
-        </View>
+        </ImageBackground>
     );
 };
 
@@ -124,7 +124,9 @@ const styles = StyleSheet.create({
         height: 150,
         borderRadius: 75,
         alignSelf: 'center',
-        marginBottom: 30
+        marginBottom: 30,
+        borderColor: colors.light,
+        borderWidth: 3
     },
     button: {
         backgroundColor: colors.dark,
